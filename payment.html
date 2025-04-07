@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fees Management - Make Payment</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        .card-input-element:checked + .card-input {
+            box-shadow: 0 0 1px 1px #4f46e5;
+            border-color: #4f46e5;
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Navigation -->
+    <nav class="bg-white shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <span class="text-xl font-semibold text-indigo-600">Fees Management</span>
+                </div>
+                <div class="flex items-center space-x-4">
+                    <a href="dashboard.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Dashboard</a>
+                    <a href="payment.html" class="text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Make Payment</a>
+                    <a href="history.html" class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">History</a>
+                    <button class="text-gray-500 hover:text-gray-900 px-3 py-2 rounded-md text-sm font-medium">Logout</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-3xl mx-auto py-6 sm:px-6 lg:px-8">
+        <div class="bg-white shadow rounded-lg overflow-hidden">
+            <div class="p-6">
+                <h2 class="text-2xl font-bold text-gray-900 mb-6">Make Payment</h2>
+                
+                <!-- Installment Selection -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-medium text-gray-900 mb-3">Select Installment</h3>
+                    <div class="space-y-3">
+                        <div class="relative">
+                            <input class="sr-only peer" type="radio" name="installment" id="installment1" checked>
+                            <label class="flex p-4 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:border-indigo-500 peer-checked:ring-1 peer-checked:ring-indigo-500" for="installment1">
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-gray-900">Installment #2</p>
+                                    <p class="text-sm text-gray-500">Due: Jan 15, 2024 (3 days left)</p>
+                                    <p class="text-sm font-semibold text-indigo-600 mt-1">Amount: ₹5,000</p>
+                                </div>
+                            </label>
+                        </div>
+                        <div class="relative">
+                            <input class="sr-only peer" type="radio" name="installment" id="installment2">
+                            <label class="flex p-4 bg-white border border-gray-300 rounded-lg cursor-pointer focus:outline-none hover:bg-gray-50 peer-checked:border-indigo-500 peer-checked:ring-1 peer-checked:ring-indigo-500" for="installment2">
+                                <div class="ml-3">
+                                    <p class="text-sm font-medium text-gray-900">Installment #3</p>
+                                    <p class="text-sm text-gray-500">Due: Jan 27, 2024 (15 days left)</p>
+                                    <p class="text-sm font-semibold text-indigo-600 mt-1">Amount: ₹5,000</p>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Method -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-medium text-gray-900 mb-3">Payment Method</h3>
+                    <div class="grid grid-cols-1 gap-4 sm:grid-cols-2">
+                        <!-- Credit Card -->
+                        <div>
+                            <input type="radio" id="credit-card" name="payment-method" class="card-input-element" checked>
+                            <label for="credit-card" class="card-input px-4 py-3 rounded-lg border border-gray-300 flex items-center cursor-pointer">
+                                <i class="fas fa-credit-card text-indigo-600 text-xl mr-3"></i>
+                                <span class="text-sm font-medium">Credit/Debit Card</span>
+                            </label>
+                        </div>
+                        <!-- UPI -->
+                        <div>
+                            <input type="radio" id="upi" name="payment-method" class="card-input-element">
+                            <label for="upi" class="card-input px-4 py-3 rounded-lg border border-gray-300 flex items-center cursor-pointer">
+                                <i class="fas fa-mobile-alt text-indigo-600 text-xl mr-3"></i>
+                                <span class="text-sm font-medium">UPI Payment</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Credit Card Form (shown by default) -->
+                <div id="credit-card-form" class="mb-8">
+                    <div class="space-y-4">
+                        <div>
+                            <label for="card-number" class="block text-sm font-medium text-gray-700">Card Number</label>
+                            <input type="text" id="card-number" name="card-number" placeholder="1234 5678 9012 3456" 
+                                class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        </div>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div>
+                                <label for="expiry-date" class="block text-sm font-medium text-gray-700">Expiry Date</label>
+                                <input type="text" id="expiry-date" name="expiry-date" placeholder="MM/YY" 
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            </div>
+                            <div>
+                                <label for="cvv" class="block text-sm font-medium text-gray-700">CVV</label>
+                                <input type="text" id="cvv" name="cvv" placeholder="123" 
+                                    class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                            </div>
+                        </div>
+                        <div>
+                            <label for="card-name" class="block text-sm font-medium text-gray-700">Name on Card</label>
+                            <input type="text" id="card-name" name="card-name" placeholder="John Doe" 
+                                class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- UPI Form (hidden by default) -->
+                <div id="upi-form" class="mb-8 hidden">
+                    <div class="space-y-4">
+                        <div>
+                            <label for="upi-id" class="block text-sm font-medium text-gray-700">UPI ID</label>
+                            <input type="text" id="upi-id" name="upi-id" placeholder="yourname@upi" 
+                                class="mt-1 block w-full border border-gray-300 rounded-md shadow-sm py-2 px-3 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm">
+                        </div>
+                        <div class="text-sm text-gray-500">
+                            <p>After clicking "Pay Now", you'll be redirected to your UPI app to complete the payment.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Payment Summary -->
+                <div class="bg-gray-50 p-4 rounded-lg mb-6">
+                    <h4 class="text-lg font-medium text-gray-900 mb-3">Payment Summary</h4>
+                    <div class="space-y-2">
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-600">Installment Amount</span>
+                            <span class="text-sm font-medium">₹5,000</span>
+                        </div>
+                        <div class="flex justify-between">
+                            <span class="text-sm text-gray-600">Convenience Fee</span>
+                            <span class="text-sm font-medium">₹0</span>
+                        </div>
+                        <div class="border-t border-gray-200 my-2"></div>
+                        <div class="flex justify-between">
+                            <span class="text-base font-medium">Total Amount</span>
+                            <span class="text-base font-bold text-indigo-600">₹5,000</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <button type="button" id="pay-now" 
+                    class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                    <i class="fas fa-lock mr-2"></i> Pay Now
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
